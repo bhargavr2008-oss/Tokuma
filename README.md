@@ -69,6 +69,8 @@ normal-vision floor and contrast. Four slots, assigned in fixed order, never cyc
 Next.js 14 App Router, TypeScript, Tailwind, Recharts. Deploys to Vercel as-is; add the
 Supabase variables in the project settings if you want the backend.
 
+Deployment trigger refreshed on 2026-09-29.
+
 ## Limitations
 
 This is a prototype methodology (v1.0). The weights are a defensible starting point, not
