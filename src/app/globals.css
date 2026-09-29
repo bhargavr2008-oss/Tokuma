@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: #F4F2EA;
+  --ink-primary: #162118;
+  --ink-secondary: #4C5A4E;
+  --ink-muted: #7C8878;
+}
+
+html, body {
+  background: #F4F2EA;
+  color: var(--ink-primary);
+}
+
+body { -webkit-font-smoothing: antialiased; }
+
+@layer base {
+  h1, h2, h3 { @apply font-serif font-normal; }
+}
+
+@layer components {
+  /* A panel is paper on paper: a hairline rule and a whisper of shadow. */
+  .glass {
+    @apply rounded-xl border border-line bg-paper shadow-card;
+  }
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-sage-500 hover:shadow-[0_2px_4px_rgba(22,33,24,.05),0_16px_36px_-20px_rgba(22,33,24,.28)];
+  }
+
+  /* Bracketed eyebrow, lifted straight from the reference's section labels. */
+  .label {
+    @apply text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--ink-muted)];
+  }
+  .label::before { content: '[ '; }
+  .label::after  { content: ' ]'; }
+  .label-plain {
+    @apply text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--ink-muted)];
+  }
+
+  .field {
+    @apply w-full rounded-lg border border-line bg-bone-50 px-3.5 py-2.5 text-sm text-[var(--ink-primary)]
+           outline-none transition placeholder:text-[var(--ink-muted)]
+           focus:border-sage-600 focus:ring-2 focus:ring-sage-500/25;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-medium transition;
+  }
+  .btn-primary { @apply btn bg-forest-900 text-bone-100 hover:bg-forest-700; }
+  .btn-sage    { @apply btn bg-sage-500 text-forest-900 hover:bg-sage-400; }
+  .btn-ghost   { @apply btn border border-line bg-transparent text-[var(--ink-primary)] hover:border-forest-600 hover:bg-bone-200; }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-bone-100 px-2.5 py-1
+           text-[11px] font-medium text-[var(--ink-secondary)];
+  }
+
+  /* Full-bleed forest band used behind the hero and section breaks. */
+  .band-dark {
+    @apply bg-forest-900 text-bone-100;
+  }
+  .band-dark .label,
+  .band-dark .label-plain { @apply text-sage-400; }
+
+  /* Oversized wordmark that closes a dark band in the reference. */
+  .wordmark {
+    @apply select-none font-serif uppercase leading-none tracking-wordmark text-bone-100/10;
+    font-size: clamp(3.5rem, 15vw, 11rem);
+  }
+
+  .rule { @apply border-t border-line; }
+}
+
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #F4F2EA; }
+::-webkit-scrollbar-thumb { background: #DAD5C4; border-radius: 9999px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
